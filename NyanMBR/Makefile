@@ -1,5 +1,5 @@
-CC       = cc
-PY       = python2
+CC       = gcc
+PY       = python
 NASM     = nasm
 QEMU     = qemu-system-i386
 
@@ -15,7 +15,8 @@ FRAMES   = $(sort $(wildcard Data/Image/Frames/*.png))
 SPECIAL  = $(sort $(wildcard Data/Image/Special/*.png))
 
 STAGE1ASM = $(wildcard Source/Stage1/*.asm)
-STAGE2ASM = $(shell find Source/Stage2 -name *.asm -type f)
+# STAGE2ASM = $(shell find Source/Stage2 -name *.asm -type f)
+STAGE2ASM = $(shell FORFILES /P Source\Stage2 /M *.asm /S /C "cmd /c echo @relpath")
 
 
 all: disk.img

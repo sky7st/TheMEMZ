@@ -39,8 +39,10 @@ for imgf in sys.argv[1:-1]:
 	img = Image.open(imgf).convert("RGB")
 	w, h = img.size
 	
+	# for y in range(0, h, 2):
 	for y in xrange(0, h, 2):
 		for x in xrange(w):
+		# for x in range(w):
 			b = (nearest_color(img.getpixel((x, y))) << 4)
 			
 			if y < 48 or x >= len("You've Nyaned for 00000.0 seconds!"):
@@ -50,6 +52,8 @@ for imgf in sys.argv[1:-1]:
 				
 			buf += chr(b)
 	img.close()
-
+# with open(sys.argv[::-1][0], "wb") as out:
 with open(sys.argv[::-1][0], "wb") as out:
+	# out.write(bytes(buf, encoding='utf8'))
 	out.write(buf)
+

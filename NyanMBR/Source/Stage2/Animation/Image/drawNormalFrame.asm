@@ -5,10 +5,10 @@ drawNormalFrame:
 	
 	mov ax, [nyanTimeBin]
 	mov dx, 0
-	mov bx, 10
+	mov bx, 1
 	div bx
 	
-	cmp ax, 420
+	cmp ax, 445
 	jne .displayFrame
 	
 	; At 420 secs, show a special image
